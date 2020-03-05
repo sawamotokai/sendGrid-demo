@@ -13,6 +13,9 @@ const sgMail = require('@sendgrid/mail');
 
 const API_KEY = functions.config().sendgrid.key;
 const TEMPLATE_ID = functions.config().sendgrid.template;
+// const API_KEY = 'C9AgTxUvT-GkuS3IJAx3fA';
+// const TEMPLATE_ID = 'd-ca26ef50eb164030bd08e9c5a641a209';
+console.log(API_KEY);
 sgMail.setApiKey(API_KEY);
 
 // functions
@@ -50,7 +53,7 @@ exports.genericEmail = functions.https.onCall(async (data, context) => {
 	return { success: true };
 });
 
-exports.newComment = fucntions.firestore
+exports.newComment = functions.firestore
 	.document('posts/{postId}/comments/{commentId}')
 	.onCreate(async (change, context) => {
 		const postSnap = await db.collection('post').doc(context.params.postId).get();
