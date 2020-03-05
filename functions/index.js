@@ -74,18 +74,18 @@ exports.newComment = functions.firestore
 		return sgMail.send(msg);
 	});
 
-exports.weeklySummary = functions.pubsub.schedule('every friday 06:00').onRun(async (context) => {
-	const userSnapshots = await admin.firestore().collection('user').get();
+// exports.weeklySummary = functions.pubsub.schedule('every friday 06:00').onRun(async (context) => {
+// 	const userSnapshots = await admin.firestore().collection('user').get();
 
-	const emails = userSnapshots.docs.map((s) => s.data().email);
+// 	const emails = userSnapshots.docs.map((s) => s.data().email);
 
-	const msg = {
-		to: emails,
-		from: 'kai_demo@test.com',
-		templateId: TEMPLATE_ID,
-		dynamic_template_data: {
-			subject: `Your weekly summary`,
-			text: `Summary...`
-		}
-	};
-});
+// 	const msg = {
+// 		to: emails,
+// 		from: 'kai_demo@test.com',
+// 		templateId: TEMPLATE_ID,
+// 		dynamic_template_data: {
+// 			subject: `Your weekly summary`,
+// 			text: `Summary...`
+// 		}
+// 	};
+// });
